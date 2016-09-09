@@ -9,15 +9,24 @@
 int main() {
 	std::cout << "Last Date Viewed: ";
 
+	//create EventReader objects
 	EventReader er("LastDate.txt", "EventList.txt");
-	int choose = 0;
-	Events e2;
-	e2.removeEvent("EventList.txt");
 
+	//create Event object
+	Events e2;
+
+	//deletes the first event of the file
+	//comment this back in to see how it works
+	//e2.removeEvent("LastDate.txt", "EventList.txt");
+	
+
+	//some necessary variables
 	std::string month = "";
 	int date = 0;
 	std::string description = "";
 	std::string time = "";
+
+	//created an event object
 	Events e1;
 	std::cout << "Month of Event?";
 	std::cin >> month;
@@ -32,12 +41,9 @@ int main() {
 	e1.setMonth(month);
 	e1.setDate(date);
 	e1.setTime(time);
-	e1.setID();
-	std::cout << e1.getID();
 	e1.writeEvent("LastDate.txt", "EventList.txt");
-	std::cout << "would you like to do this again?";
 
-	
+
 
 
 

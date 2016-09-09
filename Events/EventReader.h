@@ -6,15 +6,12 @@
 
 class EventReader {
 public:
+	/**
+	*  @pre eventreader object created
+	*  @post reads in file and stores it in a vector line by line (i.e. line 1 goes in index 0, line 2 in index 1...)
+	*  @return None
+	*/
 	EventReader(std::string datefile, std::string eventfile);
-
-	int getDate();
-	
-	std::string getMonth();
-
-private:
-	int m_date;
-	std::string m_month;
 
 
 };

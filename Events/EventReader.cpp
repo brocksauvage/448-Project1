@@ -32,12 +32,4 @@ EventReader::EventReader(std::string datefile, std::string eventfile) {
 	}
 }
 
-int EventReader::getDate()
-{
-	return (m_date);
-}
 
-std::string EventReader::getMonth()
-{
-	return (m_month);
-}

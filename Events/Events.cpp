@@ -37,23 +37,17 @@ void Events::setMonth(std::string month)
 
 void Events::removeEvent(std::string datefile, std::string eventfile) {
 	std::ifstream input(datefile);
-	std::string lastDate = "";
-	int eventNum = 0;
+	std::string lastDate;
 	if (input.is_open()) {
-		std::vector<std::string> lines_in_reverse;
-		std::string line;
-		while (std::getline(input, line)) {
-			// Store the lines in reverse order.
-			lines_in_reverse.insert(lines_in_reverse.begin(), line);
-		}
-		lastDate = lines_in_reverse[0];
+		std::getline(input, lastDate);
 	}
 
 	std::ifstream InputFile(eventfile);
-	std::vector<std::string> events;
-	std::vector<std::string> focusDay;
-	std::vector<std::string> condensed;
+	std::vector<std::string> events; //holds all events line by line
+	std::vector<std::string> focusDay; //holds only the events for the given focus day line by line
+	std::vector<std::string> condensed; //takes the focus day vector and condenses the lines to blocks of events
 	std::string line;
+	int eventNum = 0;
 	while (std::getline(InputFile, line)) {
 		events.push_back(line);
 	}
@@ -63,25 +57,37 @@ void Events::removeEvent(std::string datefile, std::string eventfile) {
 		}
 	}
 
-	std::cout << "Choose which event 1 - " << focusDay.size() << " you would like to remove";
-	std::cin >> eventNum;
+	//if there are events on the focus day execute removal code
+	if (focusDay.size() > 0) {
+		std::cout << "Choose which event: 1 - " << focusDay.size() << " you would like to remove\n";
+		std::cin >> eventNum;
 
-	for (int j = 0; j < events.size(); j = j + 4) {
-		condensed.push_back(events[j] + "\n" + events[j + 1] + "\n" + events[j + 2] + "\n\n");
-	}
-	for (int k = 0; k < condensed.size(); k++) {
-		if (condensed[k] == focusDay[eventNum - 1]) {
-			condensed.erase(condensed.begin() + k);
+		if (eventNum < 1 || eventNum > focusDay.size()) {
+			std::cout << "Sorry that's not a valid event number. Try Again.\n";
+			std::cin >> eventNum;
 		}
-	}
+		for (int j = 0; j < events.size(); j = j + 4) {
+			condensed.push_back(events[j] + "\n" + events[j + 1] + "\n" + events[j + 2] + "\n\n");
+		}
+		for (int k = 0; k < condensed.size(); k++) {
+			if (condensed[k] == focusDay[eventNum - 1]) {
+				condensed.erase(condensed.begin() + k);
+			}
+		}
 
-	std::ofstream OutputFile;
-	OutputFile.open(eventfile);
-	for (int i = 0; i < condensed.size(); i++) {
-		OutputFile << condensed[i];
+		std::ofstream OutputFile;
+		OutputFile.open(eventfile);
+		for (int i = 0; i < condensed.size(); i++) {
+			OutputFile << condensed[i];
+		}
+		OutputFile.close();
 	}
-	OutputFile.close();
+	else {
+		std::cout << "No events to be deleted\n";
+	}
 }
+
+
 
 void Events::writeEvent(std::string datefile, std::string eventfile) {
 	std::ofstream OutputFile;

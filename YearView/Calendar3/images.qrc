@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>MonthPictures/April.png</file>
+        <file>MonthPictures/August.png</file>
+        <file>MonthPictures/December.png</file>
+        <file>MonthPictures/February.png</file>
+        <file>MonthPictures/January.png</file>
+        <file>MonthPictures/March.png</file>
+        <file>MonthPictures/May.png</file>
+        <file>MonthPictures/November.png</file>
+        <file>MonthPictures/October.png</file>
+        <file>MonthPictures/September.png</file>
+    </qresource>
+</RCC>

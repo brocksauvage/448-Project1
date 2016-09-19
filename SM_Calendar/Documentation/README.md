@@ -1,0 +1,1 @@
+To view the documentation made with Doxygen(http://www.stack.nl/~dimitri/doxygen/index.html), once you have the entire zip file of the project on your machine, open up the "index.html" file within the Documentation folder.

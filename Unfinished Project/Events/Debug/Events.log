@@ -1,0 +1,7 @@
+﻿  Events.cpp
+c:\users\denae\documents\visual studio 2015\projects\events\events\events.cpp(54): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  Events.vcxproj -> C:\Users\Denae\Documents\Visual Studio 2015\Projects\Events\Debug\Events.exe
+  Events.vcxproj -> C:\Users\Denae\Documents\Visual Studio 2015\Projects\Events\Debug\Events.pdb (Full PDB)
